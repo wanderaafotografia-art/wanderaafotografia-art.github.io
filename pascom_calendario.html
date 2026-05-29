@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Eventos PASCOM 2026</title>
+<style>
+body {
+  font-family: Arial, sans-serif;
+  background: #f4f7fb;
+  margin: 0;
+  padding: 20px;
+  color: #10233f;
+}
+
+h1 {
+  text-align: center;
+  color: #003b73;
+}
+
+.mes {
+  margin-top: 30px;
+  padding: 12px;
+  border-radius: 10px;
+  color: white;
+  font-size: 24px;
+}
+
+.janeiro { background: #f2b705; }
+.fevereiro { background: #0077c8; }
+.marco { background: #3ca34d; }
+.abril { background: #d63434; }
+.maio { background: #e6a600; }
+.junho { background: #008bd2; }
+.julho { background: #2e944b; }
+.agosto { background: #c92c2c; }
+.setembro { background: #c89b00; }
+.outubro { background: #006eb6; }
+.novembro { background: #3c9f42; }
+.dezembro { background: #c5222a; }
+
+.evento {
+  background: white;
+  margin: 15px 0;
+  padding: 18px;
+  border-radius: 12px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.10);
+}
+
+.evento h3 {
+  margin-top: 0;
+  color: #003b73;
+}
+
+.check-area {
+  margin: 10px 0;
+  font-weight: bold;
+}
+
+.equipe {
+  display: none;
+  margin-top: 15px;
+  padding: 15px;
+  background: #eef5ff;
+  border-radius: 10px;
+}
+
+.equipe label {
+  display: block;
+  margin: 10px 0 5px;
+  font-weight: bold;
+}
+
+.equipe input {
+  width: 100%;
+  padding: 9px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+.fotografo {
+  color: #006eb6;
+}
+
+.videomaker {
+  color: #c5222a;
+}
+</style>
+</head>
+<body>
+
+<h1>Escala de Eventos PASCOM 2026</h1>
+
+<div id="listaEventos"></div>
+
+<script>
+const eventos = [
+  { mes: "Janeiro", classe: "janeiro", itens: [
+    "03/01 - Santíssimo Nome de Jesus"
+  ]},
+  { mes: "Fevereiro", classe: "fevereiro", itens: [
+    "01/02 - Sagrada Família"
+  ]},
+  { mes: "Março", classe: "marco", itens: [
+    "19/03 - São José"
+  ]},
+  { mes: "Abril", classe: "abril", itens: [
+    "16/04 - Eucaristia / Divino Espírito Santo"
+  ]},
+  { mes: "Maio", classe: "maio", itens: [
+    "22/05 - Festa de Santa Rita"
+  ]},
+  { mes: "Junho", classe: "junho", itens: [
+    "19/06 - Sagrado Coração"
+  ]},
+  { mes: "Julho", classe: "julho", itens: [
+    "01/07 - Preciosíssimo Sangue de Nosso Senhor"
+  ]},
+  { mes: "Agosto", classe: "agosto", itens: [
+    "30/08 - Vocações"
+  ]},
+  { mes: "Setembro", classe: "setembro", itens: [
+    "27/09 - Bíblia"
+  ]},
+  { mes: "Outubro", classe: "outubro", itens: [
+    "07/10 - Rosário e Missões"
+  ]},
+  { mes: "Novembro", classe: "novembro", itens: [
+    "16/11 - Dia de Santa Gertrudes"
+  ]},
+  { mes: "Dezembro", classe: "dezembro", itens: [
+    "29/11 - Início do Advento"
+  ]}
+];
+
+const lista = document.getElementById("listaEventos");
+
+eventos.forEach((grupo, indexMes) => {
+  const tituloMes = document.createElement("div");
+  tituloMes.className = "mes " + grupo.classe;
+  tituloMes.textContent = grupo.mes;
+  lista.appendChild(tituloMes);
+
+  grupo.itens.forEach((evento, indexEvento) => {
+    const id = `evento_${indexMes}_${indexEvento}`;
+
+    const card = document.createElement("div");
+    card.className = "evento";
+
+    card.innerHTML = `
+      <h3>${evento}</h3>
+
+      <div class="check-area">
+        <label>
+          <input type="checkbox" onchange="mostrarEquipe('${id}', this)">
+          A PASCOM irá atuar?
+        </label>
+      </div>
+
+      <div class="equipe" id="${id}">
+        <label class="fotografo">Fotógrafo 1</label>
+        <input type="text" placeholder="Nome do fotógrafo 1">
+
+        <label class="fotografo">Fotógrafo 2</label>
+        <input type="text" placeholder="Nome do fotógrafo 2">
+
+        <label class="videomaker">Videomaker 1</label>
+        <input type="text" placeholder="Nome do videomaker 1">
+
+        <label class="videomaker">Videomaker 2</label>
+        <input type="text" placeholder="Nome do videomaker 2">
+      </div>
+    `;
+
+    lista.appendChild(card);
+  });
+});
+
+function mostrarEquipe(id, checkbox) {
+  const equipe = document.getElementById(id);
+  equipe.style.display = checkbox.checked ? "block" : "none";
+}
+</script>
+
+</body>
+</html>
