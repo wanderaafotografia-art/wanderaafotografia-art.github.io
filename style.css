@@ -296,3 +296,88 @@ footer { text-align: center; padding: 30px; background: rgba(238,241,215,.78); c
   .dropdown.open:hover .dropdown-content { display: block; }
   .treatment-grid { grid-template-columns: 1fr; }
 }
+
+
+/* Página Conheça o Profissional integrada ao padrão visual */
+.menu a.active { color: var(--verde-folha); }
+.professional-page-hero { min-height: 54vh; }
+.professional-hero-card { max-width: 980px; }
+.professional-hero-card p { max-width: 760px; }
+.professional-intro-section { padding-top: 36px; }
+.professional-profile {
+  max-width: 1120px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 190px 1fr;
+  gap: 34px;
+  align-items: center;
+}
+.professional-symbol {
+  width: 170px;
+  height: 170px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  color: #050505;
+  font-size: 88px;
+  background: rgba(232, 234, 211, .78);
+  border: 3px solid rgba(92, 101, 117, .56);
+  box-shadow: inset 0 0 0 12px rgba(255,250,240,.48), var(--sombra);
+  position: relative;
+}
+.professional-symbol::after {
+  content: "";
+  position: absolute;
+  width: 210px;
+  height: 3px;
+  background: rgba(92, 101, 117, .72);
+  rotate: -55deg;
+}
+.professional-profile h2 { font-size: clamp(32px, 4.5vw, 52px); }
+.professional-timeline-section { padding-top: 40px; }
+.professional-timeline {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 22px;
+}
+.professional-card h3 { font-size: 31px; }
+.professional-card ul { margin: 16px 0 0; padding-left: 20px; line-height: 1.8; }
+.professional-card li { margin-bottom: 8px; }
+.professional-badge {
+  display: inline-block;
+  margin-bottom: 14px;
+  padding: 8px 14px;
+  border-radius: 999px;
+  background: rgba(232, 234, 211, .92);
+  color: var(--verde-folha);
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 11px;
+  border: 1px solid rgba(127,143,99,.25);
+}
+.professional-areas {
+  max-width: 1050px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+.professional-areas span {
+  padding: 18px 16px;
+  border-radius: 18px;
+  background: rgba(255, 250, 240, .72);
+  border: 1px solid rgba(127, 143, 99, .28);
+  box-shadow: 0 12px 30px rgba(63, 75, 56, .10);
+  text-align: center;
+  font-weight: 700;
+  color: var(--verde-profundo);
+}
+@media (max-width: 850px) {
+  .professional-profile,
+  .professional-timeline,
+  .professional-areas { grid-template-columns: 1fr; }
+  .professional-profile { text-align: center; }
+  .professional-symbol { margin: 0 auto; }
+  .professional-profile .hero-actions { justify-content: center; }
+}
